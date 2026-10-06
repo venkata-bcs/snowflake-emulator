@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snowflake-emulator"
+version = "0.1.0"
+description = "Clean-room, zero-cloud-cost Snowflake Data Cloud emulator for local testing and CI/CD"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Snowflake Emulator Contributors" }
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Database",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.28.0",
+    "duckdb>=1.0.0",
+    "sqlglot>=23.0.0",
+    "pydantic>=2.6.0",
+    "boto3>=1.34.0",
+    "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "httpx>=0.27.0",
+    "snowflake-connector-python>=3.8.0",
+]
+
+[project.scripts]
+snowflake-emulator = "snowflake_emulator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
